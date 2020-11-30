@@ -7,7 +7,7 @@ using System;
 
 namespace BITSTests
 {
-    public class Tests
+    public class SupplierTests
     {
 
         BitsContext dbContext;
