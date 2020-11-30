@@ -66,6 +66,7 @@ namespace BITSTests
         public void CreateTest()
         {
             Supplier b = new Supplier();
+            b.SupplierId = 7;
             b.Name = "TestSupplier";
             b.Phone = "11111";
             b.Email = "ex@ex.ex";
@@ -81,7 +82,7 @@ namespace BITSTests
             Assert.True(b2.Name == "TestSupplier");
             Assert.True(b2.Phone == "11111");
             Assert.True(b2.Email == "ex@ex.ex");
-            Assert.True(b2.Website == "ex@ex.ex");
+            Assert.True(b2.Website == "ex.ex");
             Assert.True(b2.ContactFirstName == "Flapjack");
             Assert.True(b2.ContactLastName == "Mapleface");
 
@@ -90,27 +91,16 @@ namespace BITSTests
         [Test]
         public void UpdateTest()
         {
-            Supplier c = dbContext.Supplier.Find(7);
-            c.Name = "UpdatedSupplier";
-            c.Phone = "22222";
-            c.Email = "yyy@oo.oo";
-            c.Website = "oo.oo";
-            c.ContactFirstName = "fnameupdated";
-            c.ContactLastName = "lname";
-            c.ContactPhone = "55555";
-            c.ContactEmail = "O@oo.oo";
-            c.Note = "updated";
-            dbContext.Supplier.Update(c);
+            Supplier s = dbContext.Supplier.Find(5);
+            
+            s.ContactFirstName = "fnameupdated";
+            
+            dbContext.Supplier.Update(s);
             dbContext.SaveChanges();
-            Supplier c2 = dbContext.Supplier.Find(7);
-            Assert.True(c2.Name == "UpdatedSupplier");
-            Assert.True(c2.Phone == "22222");
-            Assert.True(c2.Email == "yyy@oo.oo");
-            Assert.True(c2.Website == "oo.oo");
+            Supplier c2 = dbContext.Supplier.Find(5);
+       
             Assert.True(c2.ContactFirstName == "fnameupdated");
-            Assert.True(c2.ContactLastName == "lname");
-            Assert.True(c2.ContactPhone == "55555");
-            Assert.True(c2.ContactEmail == "O@oo.oo");
+  
 
         }
 

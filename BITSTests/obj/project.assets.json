@@ -7181,11 +7181,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Schoolwork\\Adv C#\\Project\\BITSTests\\BITSTests.csproj",
+      "projectUniqueName": "D:\\Schoolwork\\Adv C#\\Project\\ProjectplusTest\\BITSTests\\BITSTests.csproj",
       "projectName": "BITSTests",
-      "projectPath": "D:\\Schoolwork\\Adv C#\\Project\\BITSTests\\BITSTests.csproj",
+      "projectPath": "D:\\Schoolwork\\Adv C#\\Project\\ProjectplusTest\\BITSTests\\BITSTests.csproj",
       "packagesPath": "C:\\Users\\rs000\\.nuget\\packages\\",
-      "outputPath": "D:\\Schoolwork\\Adv C#\\Project\\BITSTests\\obj\\",
+      "outputPath": "D:\\Schoolwork\\Adv C#\\Project\\ProjectplusTest\\BITSTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rs000\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7202,8 +7202,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "D:\\Schoolwork\\Adv C#\\Project\\BreweryProject\\BreweryProject.csproj": {
-              "projectPath": "D:\\Schoolwork\\Adv C#\\Project\\BreweryProject\\BreweryProject.csproj"
+            "D:\\Schoolwork\\Adv C#\\Project\\ProjectplusTest\\BreweryProject\\BreweryProject.csproj": {
+              "projectPath": "D:\\Schoolwork\\Adv C#\\Project\\ProjectplusTest\\BreweryProject\\BreweryProject.csproj"
             }
           }
         }
