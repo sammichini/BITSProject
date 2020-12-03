@@ -58,7 +58,7 @@ namespace BITSTests
                c => c.SupplierId,
                s => s.SupplierId,
                (c, s) => new { c.SupplierId, c.Name, c.Phone, c.Email, c.Website, c.ContactFirstName, c.ContactLastName, c.ContactPhone, c.ContactEmail, c.Note,  s.IngredientId }).OrderBy(r => r.Name).ToList();
-            Assert.AreEqual(35, Supplier.Count);
+            Assert.AreEqual(12, Supplier.Count);
             Console.WriteLine(Supplier.ToString()); //not right yet
         }
 

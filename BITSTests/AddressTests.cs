@@ -25,7 +25,7 @@ namespace BITSTests
         public void GetAllTest()
         {
             addresses = dbContext.Address.OrderBy(s => s.AddressId).ToList();
-            Assert.AreEqual(7, addresses.Count);
+            Assert.AreEqual(8, addresses.Count);
             Assert.AreEqual(1, addresses[0].AddressId);
 
         }
@@ -36,6 +36,7 @@ namespace BITSTests
             s = dbContext.Address.Find(1);
             Assert.IsNotNull(s);
             Assert.AreEqual(1, s.AddressId);
+            Console.WriteLine(s.ToString());
         }
 
         [Test]
@@ -49,68 +50,73 @@ namespace BITSTests
         }
 
 
-        /*[Test]
+        [Test]
         public void GetWithJoinTest()
         {
-            // get a list of objects that include the Address id, name, Website and ContactLastName
-            var Address = dbContext.Address.Join(
-               dbContext.IngredientInventoryAddition,
-               c => c.AddressId,
-               s => s.AddressId,
-               (c, s) => new { c.AddressId, c.AddressId, c.Phone, c.Email, c.Website, c.ContactFirstName, c.ContactLastName, c.ContactPhone, c.ContactEmail, c.Note, s.IngredientId }).OrderBy(r => r.AddressId).ToList();
-            Assert.AreEqual(35, Address.Count);
-            Console.WriteLine(Address.ToString()); //not right yet
-        }*/
+            // get a list of objects that include the Address id, name, State and Country
+            var Address = dbContext.Address
+                        .Join(
+                              dbContext.SupplierAddress,
+                           c => c.AddressId,
+                           s => s.AddressId, 
+                           (c, s) => new { c.AddressId, s.AddressTypeId, s.SupplierId })
+                        .Join(
+                              dbContext.Supplier,//join also with supplier
+                            d => d.SupplierId,
+                            f => f.SupplierId,
+                            (d, f) => new {d.SupplierId, f.Name, f.Phone, f.Email, f.Website, f.ContactFirstName, f.ContactLastName, f.ContactPhone, f.ContactEmail, f.Note })                                
+                            .OrderBy(r => r.SupplierId).ToList();
+            Assert.AreEqual(12, Address.Count);
+            Console.WriteLine(Address.ToList()); //joined to get count of addresses related to suppliers and the suppliers info
+        }
 
-        /*[Test]
+        [Test]
         public void CreateTest()
         {
             Address b = new Address();
-            b.AddressId = 7;
-            b.AddressId = "TestSupplier";
-            b.Phone = "11111";
-            b.Email = "ex@ex.ex";
-            b.Website = "ex.ex";
-            b.ContactFirstName = "Flapjack";
-            b.ContactLastName = "Mapleface";
-            b.ContactPhone = "111111";
-            b.ContactEmail = "ex@ex.ex";
-            b.Note = "";
+            b.AddressId = 8;
+            b.StreetLine1 = "TestSupplier";
+            b.StreetLine2 = "11111";
+            b.City = "ex@ex.ex";
+            b.State = "ex.ex";
+            b.Zipcode = "Flapjack";
+            b.Country = "Mapleface";
+
             dbContext.Address.Add(b);
             dbContext.SaveChanges();
             Address b2 = dbContext.Address.Find(b.AddressId);
-            Assert.True(b2.AddressId == "TestSupplier");
-            Assert.True(b2.Phone == "11111");
-            Assert.True(b2.Email == "ex@ex.ex");
-            Assert.True(b2.Website == "ex.ex");
-            Assert.True(b2.ContactFirstName == "Flapjack");
-            Assert.True(b2.ContactLastName == "Mapleface");
+            Assert.True(b2.AddressId == b.AddressId);
+            Assert.True(b2.StreetLine2 == "11111");
+            Assert.True(b2.City == "ex@ex.ex");
+            Assert.True(b2.State == "ex.ex");
+            Assert.True(b2.Zipcode == "Flapjack");
+            Assert.True(b2.Country == "Mapleface");
 
-        }*/
-
-        /*[Test]
-        public void UpdateTest()
-        {
-            Address s = dbContext.Address.Find(5);
-
-            s.ContactFirstName = "fnameupdated";
-
-            dbContext.Address.Update(s);
-            dbContext.SaveChanges();
-            Address c2 = dbContext.Address.Find(5);
-
-            Assert.True(c2.ContactFirstName == "fnameupdated");
-
-
-        }*/
+        }
 
         [Test]
-        public void DeleteTest()
+        public void UpdateTest()
         {
-            s = dbContext.Address.Find(7);
+            Address b = dbContext.Address.Find(7);
+
+            b.StreetLine2 = "";//update from null to empty string
+
+            dbContext.Address.Update(b);
+            dbContext.SaveChanges();
+
+            Assert.True(b.StreetLine2 == "");
+
+
+        }
+
+        [Test]
+        public void DeleteTest() 
+                                 
+        {
+            s = dbContext.Address.Find(10);
             dbContext.Address.Remove(s);
             dbContext.SaveChanges();
-            Assert.IsNull(dbContext.Address.Find(7));
+            Assert.IsNull(s.AddressId);
         }
 
 
