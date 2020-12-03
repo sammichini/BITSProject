@@ -116,7 +116,7 @@ namespace BITSTests
             s = dbContext.Address.Find(10);
             dbContext.Address.Remove(s);
             dbContext.SaveChanges();
-            Assert.IsNull(s.AddressId);
+            Assert.IsNull(s);
         }
 
 
