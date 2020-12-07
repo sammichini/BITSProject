@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Info Page</title>
+    <link rel="stylesheet" type="text/css" href="styles/semantic-ui/semantic.min.css">
+</head>
+<body>
+    <div class="ui segment">
+        <div class="ui three column grid">
+            <div class="ui two wide column"></div>
+            <div class="ui twelve wide column">
+                <h1 class="ui dividing header">Supplier Information</h1>
+                <form class="ui form" id="suppliersForm">
+                    <div class="ui three column grid">
+                        <div class="ui nine wide column"><h2 class="ui heading">Find a Supplier</h2></div>
+                        <div class="ui three wide right aligned column">
+                            <input type="number" id="suppliersId" placeholder="suppliers id"/>
+                        </div> 
+                        <div class="ui four wide center aligned column">
+                            <button class="ui big button" id="findBtn">Find</button>
+                        </div>
+                    </div>
+                    <div class="ui two column grid">
+                        <div class="ui twelve wide column">
+                            <div class="field">
+                            <label>Name</label>
+                                <div class="field">
+                                <input type="text" id="name">
+                                </div>
+                            </div>
+                            <div class="field">
+                            <label>Phone</label>
+                                <div class="field">
+                                    <input type="text" id="phone">
+                                </div>
+                            </div>
+                            <div class="three fields">
+                                <div class="ten wide field">
+                                    <label>Email</label>
+                                    <input type="text" id="email">
+                                </div>
+                                <div class="three wide field">
+                                    <label>Website</label>
+                                    <input type="text" id="website">
+                                </div>
+                                <div class="three wide field">
+                                    <label>Contact First Name</label>
+                                    <input type="text" id="contactFirstName">
+                                </div>
+                                <div class="three wide field">
+                                    <label>Contact Last Name</label>
+                                    <input type="text" id="contactLastName">
+                                </div>
+                                <div class="three wide field">
+                                    <label>Contact Phone</label>
+                                    <input type="text" id="contactPhone">
+                                </div>
+                                <div class="three wide field">
+                                    <label>Contact Email</label>
+                                    <input type="text" id="contactEmail">
+                                </div>
+                                <div class="three wide field">
+                                    <label>Note</label>
+                                    <input type="text" id="note">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui four wide center aligned column">
+                            <div class="ui vertical large buttons">
+                                <button class="ui button" id="deleteBtn">Delete</button>
+                                <button class="ui button" id="editBtn">Edit</button>
+                                <button class="ui button" id="addBtn">Add</button>
+                                <button class="ui button" id="saveBtn">Save</button>
+                                <button class="ui button" id="cancelBtn">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="ui two wide column"></div>
+        </div>
+    </div>
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="styles/semantic-ui/semantic.min.js"></script>
+    <script src="js/suppliers.js"></script>
+</body>
+</html>
